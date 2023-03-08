@@ -32,7 +32,5 @@ public class Board extends BaseTimeEntity{
 			this.readCnt = readCnt;
 			this.registerId = registerId;
 			
-		}
-
-		/* */		
+		}	
 }

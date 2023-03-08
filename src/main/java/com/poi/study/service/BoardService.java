@@ -42,11 +42,17 @@ public class BoardService {
 		resultMap.put("paging",list.getPageable());
 		resultMap.put("totalCnt",list.getTotalElements());
 		resultMap.put("totalPage",list.getTotalPages());
+		
+		System.out.println("list : "+list.stream().map(BoardResponseDto::new).collect(Collectors.toList()));
+		System.out.println("paging :"+list.getPageable());
+		System.out.println("totalCnt : "+list.getTotalElements());
+		System.out.println("totalPage : "+list.getTotalPages());
 		return resultMap;
 		
 	}
 	
 	public BoardResponseDto findById(Long id) {
+		boardRepository.updateBoardReadCntInc(id);
 		return new BoardResponseDto(boardRepository.findById(id).get());
 	}
 	
@@ -60,5 +66,9 @@ public class BoardService {
 	
 	public void deleteById(Long id) {
 		boardRepository.deleteById(id);
+	}
+	
+	public void deleteAll(Long[] deleteId) {
+		boardRepository.deleteBoard(deleteId);
 	}
 }
