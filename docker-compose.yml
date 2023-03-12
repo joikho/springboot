@@ -1,0 +1,9 @@
+# version: "3"
+
+# services:
+#   # Springboot Service
+#   springboot:
+#     build:
+#       context: ./
+#       dockerfile: Dockerfile
+#     container_name: springboot
